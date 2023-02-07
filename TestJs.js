@@ -71,13 +71,34 @@ document.querySelector(".check").addEventListener('click',function (){
     ul.style.display = "none"
     const endTime = new Date()
     const executionTime = Math.round(((endTime.getTime() - startTime.getTime()) / 60000)*10)/10
+
+/******************************************************************/
+    const options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    }
+    function success(pos) {
+        const crd = pos.coords
+        alert(`Ваше текущее местоположение:\n
+          Широта: ${crd.latitude}\n
+          Долгота: ${crd.longitude}\n
+          Плюс-минус ${crd.accuracy} метров.`)
+    }
+    function error(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`)
+    }
+    const geo = navigator.geolocation.getCurrentPosition(success, error, options)
+/**************************************************************/
+
     let result = 0
     for (let i = 0 ; i < questions.length ; i++) {
         if (document.querySelectorAll("input.radio")[i*2].checked === questions[i].correctAnswer ) {
             result++
         }
     }
-    return alert(`Your result is : ${result} / ${questions.length} \n ${executionTime} minutes`)
+    return alert(`Your result is : ${result} / ${questions.length} \n ${executionTime} minutes\n
+   ${geo}`)
 } )
 
 

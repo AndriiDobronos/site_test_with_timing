@@ -16,63 +16,52 @@ const questions = [{
         caption: 'Припинити спливання події можна за допомогою метода stopPropagation?',
         correctAnswer: true
     }]
-const startTime = new Date()
-document.querySelector("body").style.background = "olive"
+
+
 document.querySelector(".check").style.display = "none"
 document.querySelector("ul").style.display = "none"
 
 document.querySelector(".checks").addEventListener('click',function (){
     document.querySelector(".singUp").style.display = "block",
         document.querySelector(".checks").style.display = "none"
-
-
 })
+
 const div = document.querySelector('.singUp')
 div.style.display = "none"
-div.innerHTML = '<div><form action="#">\n' +
-    '  <fieldset>\n' +
-    '    <legend>Disabled fieldset</legend>\n' +
-    '    <div>\n' +
-    '      <label for="name">Name: </label>\n' +
-    '      <input type="text" id="name" value="Chris">\n' +
-    '    </div>\n' +
-    '    <div>\n' +
-    '      <label for="name">Surename: </label>\n' +
-    '      <input type="text" id="name" value="Ria">\n' +
-    '    </div>\n' +
-    '    <div>\n' +
-    '      <label for="pwd">Password: </label>\n' +
-    '      <input type="password" id="pwd" value="Wookie">\n' +
-    '    <div>\n' +
-    '      <label for="pwd">Submit: </label>\n' +
-    '      <input class="submit" type="checkbox" id="pwd" value="Wookie">\n' +
-    '    </div>\n' +
-    '    </div>\n' +
-    '  </fieldset>\n' +
-    '</form></div>'
+let startTime = 0
 const ul = document.querySelector('.questions')
-document.querySelector(".submit").addEventListener('click',function (){
+document.querySelector(".submit").addEventListener('change',function (){
     div.style.display = "none"
     ul.style.display = "block"
-    document.querySelector(".check").style.display = "block"
+    startTime = new Date()
 })
 
 let allLi = ``
 for (let j = 0 ; j < questions.length ; j++) {
-    const li = []
-    li[j] = `<li>${questions[j].caption}<br><input class="radio" type="radio" name="name${j}" id="Так"/>
+     allLi += `<li>${questions[j].caption}<br><input class="radio" type="radio" name="name${j}" id="Так"/>
  <label  for="Так">Так</label><br><input class="radio" type="radio" name="name${j}" id="Ні"/>
  <label  for="Ні">Ні</label></li>`
-    allLi = allLi + `${li[j]}`
 }
 ul.innerHTML =  allLi
 
+let numberOfAnswers = 0
+for (let l = 0 ; l < (questions.length)*2 ; l++) {
+    document.querySelectorAll("input.radio")[l].onchange = function() {
+        numberOfAnswers++
+        if (numberOfAnswers === 4) {
+            document.querySelector(".check").style.display = "block"
+        }
+    }
+}
+
 document.querySelector(".check").addEventListener('click',function (){
     ul.style.display = "none"
+    document.querySelector(".check").style.display = "none"
     const endTime = new Date()
     const executionTime = Math.round(((endTime.getTime() - startTime.getTime()) / 60000)*10)/10
 
 /******************************************************************/
+
     const options = {
         enableHighAccuracy: true,
         timeout: 5000,
@@ -100,6 +89,8 @@ document.querySelector(".check").addEventListener('click',function (){
     return alert(`Your result is : ${result} / ${questions.length} \n ${executionTime} minutes\n
    ${geo}`)
 } )
+
+
 
 
 

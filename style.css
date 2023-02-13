@@ -1,0 +1,17 @@
+body {
+    background: #adddde;
+}
+select  {
+    margin-bottom: 50px;
+}
+.months-translates {
+
+    border: 1px solid black;
+}
+.checks {
+    margin-top: 60px;
+    margin-left: 50px;
+    width: 200px;
+    height: 70px;
+    font-size: 30px;
+}

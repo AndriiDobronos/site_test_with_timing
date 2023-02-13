@@ -3,10 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>TestHtml</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <button class="checks">Take the test</button>
-<div class="singUp"></div>
+<div class="singUp">
+    <div>
+        <form action="#"><br>
+            <fieldset><br>
+            <legend>Disabled fieldset</legend>
+                <div><br>
+                   <label for="name1">Name: </label><br>
+                   <input type="text" id="name1" value="Chris"><br>
+                </div><br>
+                <div><br>
+                   <label for="name2">Lastname: </label><br>
+                   <input type="text" id="name2" value="Ria"><br>
+                </div><br>
+                <div><br>
+                   <label for="pwd1">Password: </label><br>
+                   <input type="password" id="pwd1" value="Wookie"><br>
+                   <div><br>
+                      <!--  <button class="submit">Submit:</button> -->
+                      <label for="pwd2">Submit: </label><br>
+                      <input class="submit" type="checkbox" id="pwd2" value="Wookie"><br>
+                   </div><br>
+                </div><br>
+            </fieldset><br>
+        </form>
+    </div>
+</div>
 <ul class="questions"></ul>
 <button class="check">Check result</button>
 <script src="TestJs.js"></script>

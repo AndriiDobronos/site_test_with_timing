@@ -70,19 +70,18 @@ document.querySelector(".check").addEventListener('click',function (){
     }
     function success(pos) {
         const crd = pos.coords
-        divShowGeo.innerHTML =`<p>Ваше текущее местоположение:<br>
-          Широта: ${crd.latitude}<br>
-          Долгота: ${crd.longitude}<br>
-          Плюс-минус ${crd.accuracy} метров.`
+        divShowGeo.innerHTML =`<p>Your current location:<br>
+          Latitude: ${crd.latitude}<br>
+          Longitude: ${crd.longitude}<br>
+          Exectness ${crd.accuracy} meters.`
     }
     function error(err) {
         console.warn(`ERROR(${err.code}): ${err.message}`)
     }
-//
     navigator.geolocation.getCurrentPosition(success, error, options)
 /**************************************************************/
-    const divShow = document.querySelector('.showResult')
 
+    const divShow = document.querySelector('.showResult')
     let result = 0
     for (let i = 0 ; i < questions.length ; i++) {
         if (document.querySelectorAll("input.radio")[i*2].checked === questions[i].correctAnswer ) {

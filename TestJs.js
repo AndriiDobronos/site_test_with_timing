@@ -54,6 +54,7 @@ for (let l = 0 ; l < (questions.length)*2 ; l++) {
     }
 }
 
+
 document.querySelector(".check").addEventListener('click',function (){
     ul.style.display = "none"
     document.querySelector(".check").style.display = "none"
@@ -61,7 +62,7 @@ document.querySelector(".check").addEventListener('click',function (){
     const executionTime = Math.round(((endTime.getTime() - startTime.getTime()) / 60000)*10)/10
 
 /******************************************************************/
-
+    const divShowGeo = document.querySelector('.showGeolocation')
     const options = {
         enableHighAccuracy: true,
         timeout: 5000,
@@ -69,16 +70,18 @@ document.querySelector(".check").addEventListener('click',function (){
     }
     function success(pos) {
         const crd = pos.coords
-        alert(`Ваше текущее местоположение:\n
-          Широта: ${crd.latitude}\n
-          Долгота: ${crd.longitude}\n
-          Плюс-минус ${crd.accuracy} метров.`)
+        divShowGeo.innerHTML =`<p>Ваше текущее местоположение:<br>
+          Широта: ${crd.latitude}<br>
+          Долгота: ${crd.longitude}<br>
+          Плюс-минус ${crd.accuracy} метров.`
     }
     function error(err) {
         console.warn(`ERROR(${err.code}): ${err.message}`)
     }
-    const geo = navigator.geolocation.getCurrentPosition(success, error, options)
+//
+    navigator.geolocation.getCurrentPosition(success, error, options)
 /**************************************************************/
+    const divShow = document.querySelector('.showResult')
 
     let result = 0
     for (let i = 0 ; i < questions.length ; i++) {
@@ -86,8 +89,7 @@ document.querySelector(".check").addEventListener('click',function (){
             result++
         }
     }
-    return alert(`Your result is : ${result} / ${questions.length} \n ${executionTime} minutes\n
-   ${geo}`)
+    return divShow.innerHTML =`<p>Your result is : ${result} / ${questions.length} <br> Execution time ${executionTime} minutes</p>`
 } )
 
 

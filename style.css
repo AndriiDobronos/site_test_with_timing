@@ -1,24 +1,67 @@
 body {
     background: #adddde;
 }
-.show {
-    width: 300px;
-    height: 100px;
-    background: #7f7f90;
-}
-.t {
-    width: 200px;
-    height: 50px;
-    background: #adddde;
-}
 p {
     font-size: 50px;
     color: #205e5e;
 }
-.checks {
+.checks, .get_results {
     margin-top: 60px;
     margin-left: 50px;
-    width: 200px;
+    width: 280px;
     height: 70px;
     font-size: 30px;
+    box-shadow: #205e5e 2px 3px
+}
+h3 {
+    color: #205e5e;
+    font-size: 30px;
+}
+.list {
+    margin-top: 50px;
+    margin-bottom: -20px;
+    color: #205e5e;
+}
+.users {
+    margin-left: 75px;
+}
+.farewell {
+    margin: 60px;
+    padding: 150px 100px 150px 100px;
+    border: 3px solid #205e5e;
+}
+.window {
+    margin: 40px;
+    padding: 40px;
+    border: 3px solid #205e5e;
+}
+.send_result {
+    width: 20vw;
+    height: 8vh;
+    font-size: 20px;
+    box-shadow: #205e5e 2px 3px
+}
+.check {
+    width: 12vw;
+    height: 5vh;
+    font-size: 14px;
+    box-shadow: #205e5e 2px 3px
+}
+legend {
+    color:#205e5e;
+    border: #205e5e;
+}
+fieldset {
+    border: 3px solid #205e5e;
+}
+.input_label {
+    position: relative;
+    border: 1px solid #205e5e;
+    box-shadow: #205e5e 2px 3px;
+    background: #cccccc;
+    padding: 10px;
+    top: 20px;
+}
+.submit {
+    opacity: 0;
 }

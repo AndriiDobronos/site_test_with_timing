@@ -11,19 +11,22 @@ const users = [{
     id: 1,
     name: 'Linda',
     lastName: "Rian",
-    result: "4/4"
+    result: "4/4",
+    time: "2.1"
 },
     {
         id: 2,
         name: 'Adam',
         lastName: 'Rial',
-        result: "3/4"
+        result: "3/4",
+        time: "3.2"
     },
     {
         id: 3,
         name: 'Joe',
         lastName: 'Riak',
-        result: "3/4"
+        result: "3/4",
+        time: "2.8"
     }]
 
 
@@ -48,8 +51,8 @@ server.get('/',(request,reply) => {
     reply.send({name: "This is our server"})
 })
 
-server.get('/hello',(request,reply) => {
-    reply.send('Hello world')
+server.get('/number',(request,reply) => {
+    reply.send(lastId)
 })
 
 server.get('/questions',(request,reply) => {
@@ -61,24 +64,20 @@ server.get('/users',(request,reply) => {
 })
 
 server.get('/results',(request,reply) =>{
-    userResult = `3/4`
-    reply.send(userResult)
+    const result = users[0].result
+    reply.send(result)
 })
 
 
-let userResult = `7/8`
 server.post('/user',(request,reply) => {
     const newUser = JSON.parse(request.body)
-//    if(typeof newUser.name !== "string" || newUser.name.trim()) {
-//        reply.status(400).send({lastId ,error: 'Invalid user name'})
-//        return
-//    }
-
-    newUser.result = userResult
+    if(typeof(newUser.name) !== "string" || !newUser.name.trim()) {
+        reply.status(400).send({lastId ,error: 'Invalid user name'})
+        return
+    }
     newUser.id = ++lastId
     users.push(newUser)
     reply.send(lastId)
-    reply.send(userResult)
 })
 
 server.listen(5556)
